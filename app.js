@@ -11,27 +11,46 @@ $(function(){
         "pictures/156.png",
         "pictures/380.png",
     ];
+    let questions = [
+        ['Bulbasaur', 'Bidoof', 'Plant Dog', 'Bulbasaurus Rex', 1],
+        ['Charmander', 'Charizard', 'Fire Dragon', 'Angry Lizard', 2],
+        ['Squirtle', 'Buizel', 'Bubble', 'Turtle', 1],
+        ['Eevee', 'Pika', 'Zappy', 'Pikachu', 4]
+    ];
     let image = $('#Pokemon');
     let index = 0;
     function updateImage(i = 0){
         image.attr('src', pictures[i]);
     }
 
-    makeSilhouette(0);
-
     $('.survey').submit(event => {
         event.preventDefault();
+        checkAnswer();
         index++;
-        makeSilhouette(index);
+        nextQuestion(index);
+        updateImage(index);
     });
 
-    function checkAnswer(input){
-
+    function checkAnswer(){
+        let radioValue = parseInt($('input[name="answer"]:checked').val());
+        if (radioValue === questions[index][4]){
+            alert('Corret');
+        } else {
+            alert('false');
+        }
+        $('input[name="answer"]:checked').prop('checked', false);
     }
 
-    function nextQuestion(){
-        
+    function nextQuestion(index){
+        $('p').empty();
+        for (let i = 0; i < $('p').length; i++){
+            let temp = $('p')[i];
+            temp.append(questions[index][i]);
+        }
     }
+
+    updateImage(0);
+    nextQuestion(0);
 
    function makeSilhouette(i){
         let canvas = document.getElementById('can');
@@ -64,8 +83,8 @@ $(function(){
 
 /***
  * my to do list
- * center the image
+ * 
  * add a default image for the main screen
- * make canvas id can
+ * 
  * 
  */
