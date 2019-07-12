@@ -1,11 +1,20 @@
 .field{
     display: block;
-    margin-right: 100px;;
-    margin-left: 100px;
+    margin-right: 5px;;
+    margin-left: 5px;
     margin-top: 15px;
     margin-bottom: 15px;
     height: 50px;;
     background-color: aqua;
+}
+
+#qnumber, #qright{
+    float: right;
+    margin: 15px;
+}
+
+.logo{
+    display: inline-block;
 }
 
 .entry{
@@ -26,16 +35,30 @@ body{
 }
 
 .button{
-    margin-right: 15px;
-    margin-left: auto;
+    position: absolute;
+    right: 5px;
+    bottom: 10px;
+    height: 50px;
+    width: 180px;
+}
+.survey{
+    position: relative;
+    padding-bottom: 55px;
 }
 
-@media screen and (max-width: 600px){
-    main{
-        background-color: black;
-    }
+@media screen and (min-width: 600px){
     .field{
-        margin-right: 5px;
-        margin-left: 5px;
+        margin-right: 100px;
+        margin-left: 100px;
+    }
+    .button{
+        position: relative;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 30px;
+    }
+    .survey{
+        padding-bottom: 20px;
     }
 }
