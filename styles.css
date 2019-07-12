@@ -31,7 +31,13 @@
 }
 
 body{
-    background-color: darkorchid; 
+    background-image: url("pictures/bg.png"); 
+    /*background-size: 200%; */
+    background-position: right; 
+    height: 200%;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    
 }
 
 .button{
