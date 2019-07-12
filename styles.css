@@ -1,0 +1,41 @@
+.field{
+    display: block;
+    margin-right: 100px;;
+    margin-left: 100px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 50px;;
+    background-color: aqua;
+}
+
+.entry{
+    display: inline-block;
+}
+
+#question{
+    display: block;
+    text-align: center;
+}
+
+.box{
+    background-color: brown;
+}
+
+body{
+    background-color: darkorchid; 
+}
+
+.button{
+    margin-right: 15px;
+    margin-left: auto;
+}
+
+@media screen and (max-width: 600px){
+    main{
+        background-color: black;
+    }
+    .field{
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+}
