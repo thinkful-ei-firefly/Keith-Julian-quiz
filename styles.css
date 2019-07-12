@@ -5,12 +5,21 @@
     margin-top: 15px;
     margin-bottom: 15px;
     height: 50px;;
-    background-color: aqua;
+    background-color: rgb(104,145,242);
+    border-radius: 7px;
+    color : white;
+    font-family: Arial, Helvetica, sans-serif;
+    
 }
 
 #qnumber, #qright{
     float: right;
     margin: 15px;
+    color : darkslategray;
+    border: 4px solid rgb(104,145,242);
+    padding: 5px;
+    border-radius: 7px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .logo{
@@ -19,17 +28,25 @@
 
 .entry{
     display: inline-block;
+    margin-top: 20px;
+    margin-left: 10px;
+    
 }
 
 #question{
     display: block;
     text-align: center;
+    margin: 15px;
+    color : darkslategray;
+    font-family: Arial, Helvetica, sans-serif;
+
 }
 
-.box{
-    background-color: brown;
+/*.box{
+    
+    background-image: linear-gradient(rgb(127, 200, 223),rgb(104,145,242));
 }
-
+*/
 body{
     background-image: url("pictures/bg.png"); 
     /*background-size: 200%; */
@@ -46,6 +63,10 @@ body{
     bottom: 10px;
     height: 50px;
     width: 180px;
+    background-color: rgb(235, 84, 74);
+    border-radius: 7px;
+    font-size: 20px;
+    color: white; 
 }
 .survey{
     position: relative;
