@@ -19,6 +19,7 @@ $(function(){
     ];
     let image = $('#Pokemon');
     let index = 0;
+    let right = 0;
     function updateImage(i = 0){
         image.attr('src', pictures[i]);
     }
@@ -29,16 +30,20 @@ $(function(){
         index++;
         nextQuestion(index);
         updateImage(index);
+        makeSilhouette();
     });
 
     function checkAnswer(){
         let radioValue = parseInt($('input[name="answer"]:checked').val());
         if (radioValue === questions[index][4]){
             alert('Corret');
+            right++;
         } else {
             alert('false');
         }
         $('input[name="answer"]:checked').prop('checked', false);
+        $('#qright').empty();
+        $('#qright').append(`Score: ${right}`);
     }
 
     function nextQuestion(index){
@@ -54,29 +59,28 @@ $(function(){
 
    function makeSilhouette(i){
         let canvas = document.getElementById('can');
-        updateImage(i);
         let ctx = canvas.getContext('2d');
         loadedImg = new Image();
         loadedImg.onload = function(){
             canvas.height = this.naturalHeight;
             canvas.width = this.naturalWidth;
             ctx.drawImage(this, 0, 0);
-        };
-        loadedImg.src = $('#Pokemon').attr('src');
-        let rawImage = ctx.getImageData(0, 0,canvas.width,canvas.height);
-        console.log(ctx.getImageData(0,0,canvas.width,canvas.height));
-        /*for (let i = 0; i < rawImage.data.length; i+=4){
-            if(rawImage.data[i+3] >= 100) {
-                rawImage.data[i] = 30;
-                rawImage.data[i+1] = 30;
-                rawImage.data[i+2] = 30;
-                rawImage.data[i+3] = 255;
-            } else {
-                rawImage.data[i+3] = 0;
+
+            let rawImage = ctx.getImageData(0, 0,canvas.width,canvas.height);
+
+            for (let i = 0; i < rawImage.data.length; i+=4){
+                if(rawImage.data[i+3] >= 100) {
+                    rawImage.data[i] = 30; // 0-255
+                    rawImage.data[i+1] = 30; // 1-256
+                    rawImage.data[i+2] = 30;
+                    rawImage.data[i+3] = 255;
+                } else {
+                    rawImage.data[i+3] = 0;
+                }
             }
-            console.log(`${i} is ${rawImage.data[i]}`);
-        }*/
-        ctx.putImageData(rawImage, 0, 0);
+            ctx.putImageData(rawImage, 0, 0);
+        };
+        loadedImg.src = $('#Pokemon').attr('src'); 
     }
 
 });
