@@ -26,7 +26,6 @@ header{
 }
 
 #qnumber, #qright{
-    /*float: right;*/
     margin: 15px;
     color : darkslategray;
     border: 4px solid rgb(104,145,242);
