@@ -1,8 +1,8 @@
 /**
  * Keiths to do / wish list
- * 0.5) make the finish screen and start over button
  * 0.7) add aria stuff
- * 1) add the rest of the pokemon answers
+ * 1.1) make the form easier to click
+ * 1.2) shrink font size and scale picture on mobile
  * 2) randomize the answers (like have an array of possible false answers to draw from)
  * 3) randomize where the correct answer is
  * 4) add more pokemon and randomize the quiz
@@ -25,7 +25,13 @@ $(function(){
         ['Bulbasaur', 'Bidoof', 'Plant Dog', 'Bulbasaurus Rex', 1],
         ['Charmander', 'Charizard', 'Fire Dragon', 'Angry Lizard', 2],
         ['Squirtle', 'Buizel', 'Bubble', 'Turtle', 1],
-        ['Eevee', 'Pika', 'Zappy', 'Pikachu', 4]
+        ['Eevee', 'Pika', 'Zappy', 'Pikachu', 4],
+        ['Eevee', 'Pika', 'Magikarp', 'Pikachu', 3],
+        ['Eevee', 'Lapras', 'Zappy', 'Pikachu', 2],
+        ['Eevee', 'Pika', 'Zappy', 'Pikachu', 1],
+        ['Eevee', 'Pika', 'Zappy', 'Mewtwo', 4],
+        ['Eevee', 'Quilava', 'Zappy', 'Pikachu', 2],
+        ['Eevee', 'Pika', 'Latias', 'Pikachu', 3]
     ];
     let index = 0;
     let right = 0;
@@ -33,6 +39,17 @@ $(function(){
 
     $('.survey').submit(event => {
         event.preventDefault();
+        if (index === 10){
+            //take to finish screen
+            finish();
+            return;
+        }
+        if (index === 11){
+            startScreen();
+            index = 0;
+            right = 0;
+            return;
+        }
         if (!onQuestion){       //SEE QUESTION
             //if its not on a question
             //load everything
@@ -49,6 +66,10 @@ $(function(){
             onQuestion = false;
             showImage(index);
             index++;
+        }
+
+        if (index === 10){
+            $('.button').attr('value', 'Finish!');
         }
     });
 
@@ -78,24 +99,39 @@ $(function(){
     }
 
     function showImage(i){
+        var x = window.matchMedia("(min-width: 600px)");
         let canvas = document.getElementById('Pokemon');
         let ctx = canvas.getContext('2d');
         loadedImg = new Image();
         loadedImg.onload = function(){
-            canvas.height = this.naturalHeight;
-            canvas.width = this.naturalWidth;
-            ctx.drawImage(this, 0, 0);
+            if (!x.matches){
+                canvas.width= 100;
+                canvas.height = 100;           
+                ctx.drawImage(this, 0, 0, 100, 100);
+            } else {
+                canvas.height = this.naturalHeight;
+                canvas.width = this.naturalWidth;            
+                ctx.drawImage(this, 0, 0);
+            }
         };
         loadedImg.src = pictures[i];
     }
    function makeSilhouette(i){
+        var x = window.matchMedia("(min-width: 600px)");
         let canvas = document.getElementById('Pokemon');
         let ctx = canvas.getContext('2d');
         loadedImg = new Image();
         loadedImg.onload = function(){
-            canvas.height = this.naturalHeight;
-            canvas.width = this.naturalWidth;
-            ctx.drawImage(this, 0, 0);
+            
+            if (!x.matches){
+                canvas.width= 100;
+                canvas.height = 100;           
+                ctx.drawImage(this, 0, 0, 100, 100);
+            } else {
+                canvas.height = this.naturalHeight;
+                canvas.width = this.naturalWidth;            
+                ctx.drawImage(this, 0, 0);
+            }
 
             let rawImage = ctx.getImageData(0, 0,canvas.width,canvas.height);
 
@@ -123,6 +159,8 @@ $(function(){
         $('#qright').append(`Score: ${right}`);
         $('#qnumber').empty();
         $('#qnumber').append('Quesion 1 / 10');
+        $('#question').empty();
+        $('#question').append('Ready to Take The Pokemon Quiz?');
     }
     function showQuiz(){
         //show all elements
@@ -134,12 +172,27 @@ $(function(){
         $('.button').toggleClass('buttonCentre', false);
         $('#qright').toggleClass('hidden', false);
         $('#qnumber').toggleClass('hidden', false);
+        $('#Pokemon').toggleClass('hidden', false);
     }
     function showanswer(){
         //hide form and update text
         $('.field').toggleClass('hidden', true);
         $('.button').toggleClass('buttonCentre', true);
         $('.button').attr('value', 'Continue!');
+    }
+
+    function finish(){
+        index = 11;
+        $('.field').toggleClass('hidden', true);
+        $('.button').toggleClass('buttonCentre', true);
+        $('#qright').toggleClass('hidden', true);
+        $('#qnumber').toggleClass('hidden', true);
+        $('#Pokemon').toggleClass('hidden', true);
+        $('.button').attr('value', 'Play Again!');
+        //set text to display answers correct
+        $('#question').empty();
+            $('#question').append(`Congratulations! 
+             You got ${right} correct out of 10!`);
     }
 
     startScreen();
