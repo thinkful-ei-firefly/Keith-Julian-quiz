@@ -1,8 +1,5 @@
 /**
  * Keiths to do / wish list
- * 0.7) add aria stuff
- * 1.1) make the form easier to click
- * 1.2) shrink font size and scale picture on mobile
  * 2) randomize the answers (like have an array of possible false answers to draw from)
  * 3) randomize where the correct answer is
  * 4) add more pokemon and randomize the quiz
@@ -35,6 +32,7 @@ $(function(){
     ];
     let index = 0;
     let right = 0;
+    let selected = 0;
     let onQuestion = false;
 
     $('.survey').submit(event => {
@@ -61,6 +59,10 @@ $(function(){
             $('#qnumber').empty();
             $('#qnumber').append(`Quesion ${index + 1} / 10`);
         } else {         //SEE ANSWER
+            if (selected === 0){
+                alert('Please Select An Answer!');
+                return;
+            }
             checkAnswer(); 
             showanswer();
             onQuestion = false;
@@ -73,9 +75,22 @@ $(function(){
         }
     });
 
+    $('.field').click(function(){
+        const target = $(event.currentTarget);
+        const notTarget = $('.field').not(target);
+        const pressedBool = $(target).attr('aria-pressed', true);
+        notTarget.attr('aria-pressed', false);
+        notTarget.toggleClass('pressed', false);
+        target.toggleClass('pressed', true);
+        $('.field').each(function(mark, value){
+            if ($(value).hasClass('pressed'))
+                selected = mark + 1;
+                return;
+        })
+    });
+
     function checkAnswer(){
-        let radioValue = parseInt($('input[name="answer"]:checked').val());
-        if (radioValue === questions[index][4]){
+        if (selected === questions[index][4]){
             $('#question').empty();
             $('#question').append(`Correct! 
              It's ${questions[index][questions[index][4]-1]}`);
@@ -85,9 +100,10 @@ $(function(){
             $('#question').append(`Incorrect! 
              It's ${questions[index][questions[index][4]-1]}`);
         }
-        $('input[name="answer"]:checked').prop('checked', false);
         $('#qright').empty();
         $('#qright').append(`Score: ${right}`);
+        selected = 0;
+        $('.field').toggleClass('pressed', false)
     }
 
     function nextQuestion(z){
@@ -170,6 +186,7 @@ $(function(){
         $('#question').append('Whos That Pokemon?');
         $('.field').toggleClass('hidden', false);
         $('.button').toggleClass('buttonCentre', false);
+        $('.button').attr('value', 'Submit!');
         $('#qright').toggleClass('hidden', false);
         $('#qnumber').toggleClass('hidden', false);
         $('#Pokemon').toggleClass('hidden', false);
