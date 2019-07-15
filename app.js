@@ -6,6 +6,7 @@
  * 2) randomize the answers (like have an array of possible false answers to draw from)
  * 3) randomize where the correct answer is
  * 4) add more pokemon and randomize the quiz
+ * 12) add names to bottom
  */
 $(function(){
     let pictures = [
