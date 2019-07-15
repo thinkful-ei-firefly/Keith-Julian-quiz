@@ -1,3 +1,11 @@
+/**
+ * Keiths to do / wish list
+ * 0.5) make the finish screen and start over button
+ * 1) add the rest of the pokemon answers
+ * 2) randomize the answers (like have an array of possible false answers to draw from)
+ * 3) randomize where the correct answer is
+ * 4) add more pokemon and randomize the quiz
+ */
 $(function(){
     let pictures = [
         "pictures/1.png",
@@ -37,10 +45,9 @@ $(function(){
             checkAnswer(); 
             showanswer();
             onQuestion = false;
+            showImage(index);
             index++;
         }
-        //nother else if
-        //load next question
     });
 
     function checkAnswer(){
@@ -68,6 +75,17 @@ $(function(){
         }
     }
 
+    function showImage(i){
+        let canvas = document.getElementById('Pokemon');
+        let ctx = canvas.getContext('2d');
+        loadedImg = new Image();
+        loadedImg.onload = function(){
+            canvas.height = this.naturalHeight;
+            canvas.width = this.naturalWidth;
+            ctx.drawImage(this, 0, 0);
+        };
+        loadedImg.src = pictures[i];
+    }
    function makeSilhouette(i){
         let canvas = document.getElementById('Pokemon');
         let ctx = canvas.getContext('2d');
@@ -124,12 +142,3 @@ $(function(){
 
     startScreen();
 });
-
-/***
- * my to do list
- * show pokemon on answer
- * update text on answer
- * revert text on question
- * 
- * 
- */

@@ -79,6 +79,9 @@ body{
     background-repeat: no-repeat;
     /*background-size: cover;*/ 
 }
+/*html{
+    background-color: rgb(127, 173, 113);
+}*/
 
 .button{
     position: absolute;
