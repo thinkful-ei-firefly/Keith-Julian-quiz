@@ -48,7 +48,6 @@ header{
 .pressed{
     /*make this look good*/
     background-color: darkblue;
-
 }
 
 .logo{
@@ -58,8 +57,7 @@ header{
 .entry{
     display: inline-block;
     margin-top: 20px;
-    margin-left: 10px;
-    
+    margin-left: 10px;   
 }
 
 #question{
@@ -69,7 +67,6 @@ header{
     margin: 15px;
     color : darkslategray;
     font-family: Arial, Helvetica, sans-serif;
-
 }
 
 .hidden{
