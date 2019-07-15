@@ -76,7 +76,7 @@ header{
 }
 
 body{
-    background-image: url("pictures/bg.png");
+    background-image: url("Pictures/bg.png");
     background-position: right; 
     height: 200%;
     background-repeat: no-repeat;

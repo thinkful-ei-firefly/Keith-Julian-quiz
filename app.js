@@ -7,16 +7,16 @@
  */
 $(function(){
     let pictures = [
-        "pictures/1.png",
-        "pictures/6.png",
-        "pictures/7.png",
-        "pictures/25.png",
-        "pictures/129.png",
-        "pictures/131.png",
-        "pictures/133.png",
-        "pictures/150.png",
-        "pictures/156.png",
-        "pictures/380.png",
+        "Pictures/1.png",
+        "Pictures/6.png",
+        "Pictures/7.png",
+        "Pictures/25.png",
+        "Pictures/129.png",
+        "Pictures/131.png",
+        "Pictures/133.png",
+        "Pictures/150.png",
+        "Pictures/156.png",
+        "Pictures/380.png",
     ];
     let questions = [
         ['Bulbasaur', 'Bidoof', 'Plant Dog', 'Bulbasaurus Rex', 1],
