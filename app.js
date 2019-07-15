@@ -17,48 +17,59 @@ $(function(){
         ['Squirtle', 'Buizel', 'Bubble', 'Turtle', 1],
         ['Eevee', 'Pika', 'Zappy', 'Pikachu', 4]
     ];
-    let image = $('#Pokemon');
     let index = 0;
     let right = 0;
-    function updateImage(i = 0){
-        image.attr('src', pictures[i]);
-    }
+    let onQuestion = false;
 
     $('.survey').submit(event => {
         event.preventDefault();
-        checkAnswer();
-        index++;
-        nextQuestion(index);
-        updateImage(index);
-        makeSilhouette();
+        if (!onQuestion){       //SEE QUESTION
+            //if its not on a question
+            //load everything
+            //then index
+            showQuiz();
+            nextQuestion(index);
+            makeSilhouette(index);
+            onQuestion = true;
+            $('#qnumber').empty();
+            $('#qnumber').append(`Quesion ${index + 1} / 10`);
+        } else {         //SEE ANSWER
+            checkAnswer(); 
+            showanswer();
+            onQuestion = false;
+            index++;
+        }
+        //nother else if
+        //load next question
     });
 
     function checkAnswer(){
         let radioValue = parseInt($('input[name="answer"]:checked').val());
         if (radioValue === questions[index][4]){
-            alert('Corret');
+            $('#question').empty();
+            $('#question').append(`Correct! 
+             It's ${questions[index][questions[index][4]-1]}`);
             right++;
         } else {
-            alert('false');
+            $('#question').empty();
+            $('#question').append(`Incorrect! 
+             It's ${questions[index][questions[index][4]-1]}`);
         }
         $('input[name="answer"]:checked').prop('checked', false);
         $('#qright').empty();
         $('#qright').append(`Score: ${right}`);
     }
 
-    function nextQuestion(index){
+    function nextQuestion(z){
         $('p').empty();
         for (let i = 0; i < $('p').length; i++){
             let temp = $('p')[i];
-            temp.append(questions[index][i]);
+            temp.append(questions[z][i]);
         }
     }
 
-    updateImage(0);
-    nextQuestion(0);
-
    function makeSilhouette(i){
-        let canvas = document.getElementById('can');
+        let canvas = document.getElementById('Pokemon');
         let ctx = canvas.getContext('2d');
         loadedImg = new Image();
         loadedImg.onload = function(){
@@ -80,15 +91,45 @@ $(function(){
             }
             ctx.putImageData(rawImage, 0, 0);
         };
-        loadedImg.src = $('#Pokemon').attr('src'); 
+        loadedImg.src = pictures[i]; 
     }
 
+    function startScreen(){
+        //hide all elements besides the label? and the button
+        $('.field').toggleClass('hidden', true);
+        $('.button').toggleClass('buttonCentre', true);
+        $('.button').attr('value', 'Start!');
+        $('#qright').empty();
+        $('#qright').append(`Score: ${right}`);
+        $('#qnumber').empty();
+        $('#qnumber').append('Quesion 1 / 10');
+    }
+    function showQuiz(){
+        //show all elements
+        nextQuestion(index);
+        makeSilhouette(index);
+        $('#question').empty();
+        $('#question').append('Whos That Pokemon?');
+        $('.field').toggleClass('hidden', false);
+        $('.button').toggleClass('buttonCentre', false);
+        $('#qright').toggleClass('hidden', false);
+        $('#qnumber').toggleClass('hidden', false);
+    }
+    function showanswer(){
+        //hide form and update text
+        $('.field').toggleClass('hidden', true);
+        $('.button').toggleClass('buttonCentre', true);
+        $('.button').attr('value', 'Continue!');
+    }
+
+    startScreen();
 });
 
 /***
  * my to do list
- * 
- * add a default image for the main screen
+ * show pokemon on answer
+ * update text on answer
+ * revert text on question
  * 
  * 
  */
