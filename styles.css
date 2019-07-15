@@ -16,17 +16,16 @@
     display: block;
     margin-right: auto;
     margin-left: auto;
+    size: 50%;
 }
 
 header{
     display: flex;
 }
-#test{
-    margin-right: auto;
-}
 
 #qnumber, #qright{
-    margin: 15px;
+    font-size: 15px;
+    margin: 5px;
     color : darkslategray;
     border: 4px solid rgb(104,145,242);
     padding: 5px;
@@ -52,6 +51,7 @@ p{
 }
 
 #question{
+    font-size: 25px;
     display: block;
     text-align: center;
     margin: 15px;
@@ -66,23 +66,12 @@ p{
     display: none;
 }
 
-/*.box{
-    
-    background-image: linear-gradient(rgb(127, 200, 223),rgb(104,145,242));
-}
-*/
 body{
-    background-image: url("pictures/bg.png"); 
-    /*background-size: 200%; */
+    background-image: url("pictures/bg.png");
     background-position: right; 
     height: 200%;
     background-repeat: no-repeat;
-    /*background-size: cover;*/ 
 }
-/*html{
-    background-color: rgb(127, 173, 113);
-}*/
-
 .button{
     position: absolute;
     right: 5px;
@@ -107,9 +96,12 @@ body{
 }
 
 @media screen and (min-width: 600px){
+    #question{
+        font-size: 40px;
+    }
     .field{
-        margin-right: 100px;
-        margin-left: 100px;
+        margin-right: 20%;
+        margin-left: 20%;
     }
     .button{
         position: relative;
@@ -120,5 +112,14 @@ body{
     }
     .survey{
         padding-bottom: 20px;
+    }
+    #qright{
+        margin: 15px;
+        margin-left: auto;
+        font-size: 30px;
+    }
+    #qnumber{
+        margin: 15px;
+        font-size: 30px;
     }
 }
