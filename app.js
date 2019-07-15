@@ -1,6 +1,7 @@
 /**
  * Keiths to do / wish list
  * 0.5) make the finish screen and start over button
+ * 0.7) add aria stuff
  * 1) add the rest of the pokemon answers
  * 2) randomize the answers (like have an array of possible false answers to draw from)
  * 3) randomize where the correct answer is
