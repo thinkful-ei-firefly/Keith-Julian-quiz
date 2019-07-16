@@ -30,10 +30,17 @@ $(function(){
         ['Eevee', 'Quilava', 'Zappy', 'Pikachu', 2],
         ['Eevee', 'Pika', 'Latias', 'Pikachu', 3]
     ];
+    //first one is empty so the pokedex numbers line up with array numbers
+    let names = ['', 'Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', 'Squirtle', 'Wartortle', 'Blastoise',
+        'Caterpie', 'Metapod', 'Butterfree', 'Weedle', 'Kakuna', 'Beedrill', 'Pidgey', 'Pidgeotto', 'Pidgeot', 'Rattata', 'Raticate',
+        'Spearow', 'Fearow', 'Ekans', 'Arbok', 'Pikachu', 'Raichu', 'Sandshrew', 'Sandslash'
+    ];
+    let newQuestions = [1, 6, 7, 25, 129, 131, 133, 150, 156, 380];
     let index = 0;
     let right = 0;
     let selected = 0;
     let onQuestion = false;
+    let CurrentAnswer = 0;
 
     $('.survey').submit(event => {
         event.preventDefault();
@@ -90,7 +97,8 @@ $(function(){
     });
 
     function checkAnswer(){
-        if (selected === questions[index][4]){
+        console.log('Selected' + selected);
+        if (selected === CurrentAnswer){
             $('#question').empty();
             $('#question').append(`Correct! 
              It's ${questions[index][questions[index][4]-1]}`);
@@ -107,11 +115,32 @@ $(function(){
     }
 
     function nextQuestion(z){
-        $('p').empty();
+        /*$('p').empty();
         for (let i = 0; i < $('p').length; i++){
             let temp = $('p')[i];
             temp.append(questions[z][i]);
+        }*/
+
+        //epmty p
+        //load random names into all spots
+        //load the correct answer into a random spot and mark where that is  
+        $('p').empty();
+        for (let i = 0; i < $('p').length; i++){
+            let temp = $('p')[i];
+            let num = Math.floor(Math.random()* 28) +1;
+            while (num === newQuestions[index]){
+                num = Math.floor(Math.random()* 28) +1;
+            }
+            temp.append(names[num]);
         }
+        let answerSpot = Math.floor(Math.random()* 4) +1;
+        CurrentAnswer = answerSpot;
+        console.log('currentanswer' + CurrentAnswer);
+        let temp = $('p')[CurrentAnswer - 1];
+        $(temp).empty();
+        $(temp).append(names[newQuestions[index]]);
+        console.log('temp item' + temp);
+
     }
 
     function showImage(i){
