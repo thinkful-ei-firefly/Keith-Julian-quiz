@@ -33,7 +33,12 @@ $(function(){
     //first one is empty so the pokedex numbers line up with array numbers
     let names = ['', 'Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', 'Squirtle', 'Wartortle', 'Blastoise',
         'Caterpie', 'Metapod', 'Butterfree', 'Weedle', 'Kakuna', 'Beedrill', 'Pidgey', 'Pidgeotto', 'Pidgeot', 'Rattata', 'Raticate',
-        'Spearow', 'Fearow', 'Ekans', 'Arbok', 'Pikachu', 'Raichu', 'Sandshrew', 'Sandslash'
+        'Spearow', 'Fearow', 'Ekans', 'Arbok', 'Pikachu', 'Raichu', 'Sandshrew', 'Sandslash', 'Nidoran(Female)', 'Nidorina', 'Nidoqueen',
+        'Nidoran(male)', 'Nidorino', 'Nidoking', 'Celfairy', 'Clefable', 'Vulpix', 'Ninetails', 'Jigglypuff', 'Wigglytuff', 'Zubat', 'Golbat',
+        'Oddish', 'Gloom', 'Vileplume', 'Paras', 'Parasect', 'Venonat', 'Venomoth', 'Diglett', 'Dugtrio', 'Meowth', 'Persian', 'Psyduck',
+        'Golduck', 'Mankey', 'Primeape', 'Growlithe', 'Arcanine', 'Poliwag', 'Poliwhirl', 'Poliwrath', 'Abra', 'Kadabra', 'Alakazam', 'Machop',
+        'Machoke', 'Machamp', 'Bellsprout', 'Weepinbell', 'Victreebel', 'Tentacool', 'Tentacruel', 'Geodude', 'Gravler', 'Golem', 'Ponyta',
+        'Rapidash', 'Slowpoke', 'Slowbro', 'Magnemite', 'Magneton', `Farfetch'd`, 'Doduo'
     ];
     let newQuestions = [1, 6, 7, 25, 129, 131, 133, 150, 156, 380];
     let index = 0;
@@ -97,7 +102,6 @@ $(function(){
     });
 
     function checkAnswer(){
-        console.log('Selected' + selected);
         if (selected === CurrentAnswer){
             $('#question').empty();
             $('#question').append(`Correct! 
@@ -119,27 +123,21 @@ $(function(){
         for (let i = 0; i < $('p').length; i++){
             let temp = $('p')[i];
             temp.append(questions[z][i]);
-        }*/
-
-        //epmty p
-        //load random names into all spots
-        //load the correct answer into a random spot and mark where that is  
+        } old code */
         $('p').empty();
         for (let i = 0; i < $('p').length; i++){
             let temp = $('p')[i];
-            let num = Math.floor(Math.random()* 28) +1;
+            let num = Math.floor(Math.random()* 84) +1;
             while (num === newQuestions[index]){
-                num = Math.floor(Math.random()* 28) +1;
+                num = Math.floor(Math.random()* 84) +1;
             }
             temp.append(names[num]);
         }
         let answerSpot = Math.floor(Math.random()* 4) +1;
         CurrentAnswer = answerSpot;
-        console.log('currentanswer' + CurrentAnswer);
         let temp = $('p')[CurrentAnswer - 1];
         $(temp).empty();
         $(temp).append(names[newQuestions[index]]);
-        console.log('temp item' + temp);
 
     }
 
