@@ -8,7 +8,7 @@
 
 let selected = 0;
 $(function(){    
-    let index = 10;
+    let index = 0;
     let right = 0; 
     let onQuestion = false;
     let CurrentAnswer = 0;
