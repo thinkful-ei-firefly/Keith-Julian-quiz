@@ -73,7 +73,6 @@ const screenStuff = (function(){
   }
   function showQuiz(int){
     //show all elements
-    nextQuestion(int);
     makeSilhouette(int);
     $('#question').empty();
     $('#question').append('Whos That Pokemon?');
@@ -91,7 +90,6 @@ const screenStuff = (function(){
     $('.button').attr('value', 'Continue!');
   }
   function finish(right){
-    index = 11;
     $('.field').toggleClass('hidden', true);
     $('.button').toggleClass('buttonCentre', true);
     $('#qright').toggleClass('hidden', true);

@@ -2,8 +2,8 @@ const info = (function(){
   //first one is empty so the pokedex numbers line up with array numbers
   let names = ['', 'Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', 'Squirtle', 'Wartortle', 'Blastoise',
     'Caterpie', 'Metapod', 'Butterfree', 'Weedle', 'Kakuna', 'Beedrill', 'Pidgey', 'Pidgeotto', 'Pidgeot', 'Rattata', 'Raticate',
-    'Spearow', 'Fearow', 'Ekans', 'Arbok', 'Pikachu', 'Raichu', 'Sandshrew', 'Sandslash', 'Nidoran(Female)', 'Nidorina', 'Nidoqueen',
-    'Nidoran(male)', 'Nidorino', 'Nidoking', 'Celfairy', 'Clefable', 'Vulpix', 'Ninetails', 'Jigglypuff', 'Wigglytuff', 'Zubat', 'Golbat',
+    'Spearow', 'Fearow', 'Ekans', 'Arbok', 'Pikachu', 'Raichu', 'Sandshrew', 'Sandslash', 'Nidoran♀', 'Nidorina', 'Nidoqueen',
+    'Nidoran♂', 'Nidorino', 'Nidoking', 'Celfairy', 'Clefable', 'Vulpix', 'Ninetails', 'Jigglypuff', 'Wigglytuff', 'Zubat', 'Golbat',
     'Oddish', 'Gloom', 'Vileplume', 'Paras', 'Parasect', 'Venonat', 'Venomoth', 'Diglett', 'Dugtrio', 'Meowth', 'Persian', 'Psyduck',
     'Golduck', 'Mankey', 'Primeape', 'Growlithe', 'Arcanine', 'Poliwag', 'Poliwhirl', 'Poliwrath', 'Abra', 'Kadabra', 'Alakazam', 'Machop',
     'Machoke', 'Machamp', 'Bellsprout', 'Weepinbell', 'Victreebel', 'Tentacool', 'Tentacruel', 'Geodude', 'Gravler', 'Golem', 'Ponyta',
@@ -101,7 +101,7 @@ const info = (function(){
 ];
   
   let getName = function(int){
-    return name[int];
+    return names[int];
   }
   let getPicture = function(int){
     return pictures[int];
