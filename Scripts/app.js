@@ -23,7 +23,7 @@ $(function(){
             return;
         }
         if (index === 11){
-            screenStuff.startScreen();
+            screenStuff.startScreen(right);
             index = 0;
             right = 0;
             return;
