@@ -92,6 +92,6 @@ $(function(){
 
     }
 
-    screenStuff.startScreen();
+    screenStuff.startScreen(right);
     eventHandler.radio();
 });
