@@ -19,7 +19,7 @@ $(function(){
         if (index === 10){
             //take to finish screen
             index++;
-            screenStuff.finish();
+            screenStuff.finish(right);
             return;
         }
         if (index === 11){
