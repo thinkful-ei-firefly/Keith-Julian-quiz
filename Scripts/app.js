@@ -32,8 +32,8 @@ $(function(){
             //if its not on a question
             //load everything
             //then index
-            screenStuff.showQuiz();
             answer = Math.floor(Math.random()* 386) +1;
+            screenStuff.showQuiz(answer);
             nextQuestion(answer);
             screenStuff.makeSilhouette(answer);
             onQuestion = true;
