@@ -77,9 +77,8 @@ header{
 
 body{
     background-image: url("Pictures/bg.png");
-    background-position: right; 
+    background-position: 100% 20%;
     height: 200%;
-    background-repeat: no-repeat;
 }
 .button{
     position: absolute;
